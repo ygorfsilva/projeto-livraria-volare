@@ -1,1 +1,4 @@
 /php/nbproject/private/
+.nbproject
+composer.phar
+/vendor/
