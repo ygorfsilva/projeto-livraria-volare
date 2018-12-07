@@ -1,0 +1,24 @@
+Email sent
+rafaelfreitas1618@gmail.com
+2018-12-03 19:14
+
+Email sent
+rafaelfreitas1618@gmail.com
+2018-12-03 19:14
+
+Email sent
+nathalia_fonseca@id.uff.br
+2018-12-03 19:15
+
+Email sent
+nathalia_fonseca@id.uff.br
+2018-12-03 19:15
+
+Email sent
+websenac2018@gmail.com
+2018-12-03 19:16
+
+SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting
+rafaelfreitas1618@gmail.com
+2018-12-03 19:21
+

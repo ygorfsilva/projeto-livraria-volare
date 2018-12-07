@@ -1,0 +1,162 @@
+body{
+    font-family: "trebuchet";
+}
+
+.nopadding{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.paddingtop{
+    padding-top: 10px;
+}
+
+alinhamentotexto {
+  text-align: left;
+}
+
+.blackcolor{
+    color: black;
+}
+
+.COLORE{
+    background-color: rgb(226,108,255);     
+}
+
+.COLORE1{
+    background-color: rgb(226,108,255); 
+    font-size: 12px;
+}
+
+.COLORETEXTO{
+    color: rgb(203,134,207);
+}
+
+.opacidade{
+    opacity: 0.7;
+}
+
+.bordas {
+    border: 2px solid rgb(226,108,255);
+    border-radius: 0px;
+}
+
+.bordasb {
+    border: 1px solid lightgray;
+    border-radius: 6px;
+}
+
+.bordasc {
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    height: 290px;
+}
+
+.fontecatorze{
+     font-size: 14px;
+}
+
+.fontequinze{
+     font-size: 12px;
+}
+
+.fontedezesseis{
+    font-size: 16px;
+}
+
+.fontedezoito{
+    font-size: 18px;
+}
+
+.fontevinte{
+    font-size: 20px;
+}
+
+.fontevinteecinco{
+    font-size: 25px;
+}
+
+.marginfooter{
+    margin-top: 10px;
+    margin-left: 28px;
+}
+
+.distanciadamargem{
+    padding-right: 30px;
+    padding-left: 30px;
+    
+}
+
+.topoformatacao{
+    background-color: rgb(203,134,207);
+    font-size: 15px;
+    padding-left: 35px;
+    text-align: left;
+    height: auto;
+    color: white;
+}
+
+paddingsearch{
+    padding-bottom: 1px;
+}
+
+.centraliza{
+    margin:auto;
+}
+
+.margintop{
+    margin-top: 29px;
+}
+
+.sectionformatacao{
+    border-top: 1px solid rgb(203,134,207);
+    padding-top: 25px;
+    margin-bottom: 30px;
+
+}
+
+.paddingtexto{
+    padding-top: 10px;
+}
+
+.alturafooter{
+    height: 100px;
+}
+
+.largurainput{
+    width: 40%
+}
+
+
+/*
+	Ratings Stars
+	https://css-tricks.com/star-ratings/
+*/
+/*
+	Ratings Stars
+	(with as little code as possible)
+*/
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   left: 0; 
+   color: lightblue;
+}
+/****fim do rating stars****/
+
+
