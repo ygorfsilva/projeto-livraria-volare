@@ -12,16 +12,16 @@
     <title>Hello, world!</title>
   </head>
   <body>
-  	<?php 
-  		$livros = array('livro1' => array('titulo' => 'Livro 1', 'categoria' => 'ação', 'autor' => 'Thiago', 'qtd' => 10, 'id' => 1), 
-  		'livro2' => array('titulo' => 'Livro 2', 'categoria' => 'aventura', 'autor' => 'Reinaldo', 'qtd' => 3, 'id' => 2),  
+  	<?php
+  		$livros = array('livro1' => array('titulo' => 'Livro 1', 'categoria' => 'ação', 'autor' => 'Thiago', 'qtd' => 10, 'id' => 1),
+  		'livro2' => array('titulo' => 'Livro 2', 'categoria' => 'aventura', 'autor' => 'Reinaldo', 'qtd' => 3, 'id' => 2),
   		'livro3' => array('titulo' => 'Livro 3', 'categoria' => 'Didatico', 'autor' => 'Roberto', 'qtd' => 7, 'id' => 3));
 
   	?>
   	<hr class="mt-5">
     <div class="row mt-5">
     	<div class="col-2"></div>
-    	<?php 
+    	<?php
     		foreach ($livros as $i) {?>
     			<div class="col-3 ml-3">
     				Título: <?=$i['titulo'];?><br>
@@ -37,7 +37,7 @@
     </div>
     <hr>
     <h1 class="text-center">Carrinho</h1>
-    <?php 
+    <?php
     		if (isset($_SESSION['carrinho'])) {
     			$cart = $_SESSION['carrinho'];
     			foreach ($livros as $b => $i) {
@@ -52,7 +52,6 @@
     				<a href="carrinho.php?acao=del&id=<?=$i['id']?>">Tirar do carrinho</a><br>
     		<?php } } } ?>
       </div>
-    			 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
