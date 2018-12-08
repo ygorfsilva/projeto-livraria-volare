@@ -1,6 +1,7 @@
-<?php 
+<?php
 require_once 'conexao.php';
 function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
+	$datanascimento = date('Y-m-d', strtotime($datanascimento));
 	$conexao = getConnection();
 	$sql = "INSERT INTO usuarios VALUES (NULL, '$nome', '$sobrenome', '$email', '$cpf', '$datanascimento', 1, md5('$senha'), 1 , $genero, 1)";
 	$resultado = mysqli_query($conexao, $sql);
@@ -15,15 +16,14 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 }
 function logarUsuario($email, $senha){
 	$conexao = getConnection();
-	$sql = "SELECT nome, email FROM usuarios where email = '$email' and senha = md5('$senha')";
+	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha')";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
-		$_SESSION['user'] = mysqli_fetch_assoc($resultado);
-		return true;
+		return mysqli_fetch_assoc($resultado);
 	} else {
 		return false;
 	}
-	
+
 }
 function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id){
 	$conexao = getConnection();
