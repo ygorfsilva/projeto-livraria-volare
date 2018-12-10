@@ -86,7 +86,3 @@ if (mysqli_affected_rows($conexao) >= 1) {
 	return $arr;
 }
 }
-function deslogarUsuario(){
-	session_destroy();
-	header('location: index.php');
-}

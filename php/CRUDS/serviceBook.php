@@ -29,3 +29,10 @@ require_once 'crud_book.php';
 			return false;
 		}
 	}
+	function serviceListarLancamento(){
+		if ($livro = listarLancamentos()) {
+			return $livro;
+		} else {
+			return false;
+		}
+	}
