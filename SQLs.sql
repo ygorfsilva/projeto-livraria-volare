@@ -15,7 +15,7 @@ values ('Thiago', 'Chaves', 'tchaves34@gmail.com', '123456789-00', '2018/02/17',
 
 
 insert into endereco (cep, endereco, numero, complemento, bairro, estado, cidade, usuarios_id, TipoEndereco_id)
-values ('25715-000', 'R Sem Nome', 1234, 'Casa', 'Jardim Catarina', 'Rio de Janeiro', 'São Gonçalo', 1, 1);
+values ('25715-000', 'R Sem Nome', 1234, 'Casa', 'Jardim Catarina', 'Rio de Janeiro', 'SÃ£o GonÃ§alo', 1, 1);
 
 
 insert into tipotelefone(tipo, Telefone_id) values ('Celular', 1);
@@ -27,7 +27,7 @@ insert into telefone (numero, usuarios_id) values ('(21) 9 7958-6294', 1);
 insert into tipodecapa (tipodecapa) values ('Dura');
 
 
-insert into categoria (categoria) values ("Ficção");
+insert into categoria (categoria) values ("FicÃ§Ã£o");
 
 
 insert into idioma (idioma) values ('POR');
@@ -37,9 +37,9 @@ insert into subcategorias (assunto) values ('Ufologia');
 
 
 insert into produto (Categoria_id, titulo, autor, editora, isbn, numeropaginas, sinopse, peso, datapublicacao, fornecedor, preco, quantidade, TipoDeCapa_id)
-values (1, 'Alien', 'Alan Dean Foster', 'Warner Books', '9782302024618', 271, 'A princípio, mais uma missão como tantas do rebocador Nostromo: abastecer a terra com minério recolhido do espaço exterior. 
-Em sua tripulação, formada por sete competentes profissionais, apenas um novato: o oficial de ciências, designado de última hora para compor aquela expedição.
-No entanto, o que eles não sabiam era que o Nostromo estava programado para cumprir uma rota diferente, um curso que os levaria a receber um oitavo passageiro, que, com o intuito de se reproduzir, espalharia o asco e o pavor.',
+values (1, 'Alien', 'Alan Dean Foster', 'Warner Books', '9782302024618', 271, 'A princÃ­pio, mais uma missÃ£o como tantas do rebocador Nostromo: abastecer a terra com minÃ©rio recolhido do espaÃ§o exterior. 
+Em sua tripulaÃ§Ã£o, formada por sete competentes profissionais, apenas um novato: o oficial de ciÃªncias, designado de Ãºltima hora para compor aquela expediÃ§Ã£o.
+No entanto, o que eles nÃ£o sabiam era que o Nostromo estava programado para cumprir uma rota diferente, um curso que os levaria a receber um oitavo passageiro, que, com o intuito de se reproduzir, espalharia o asco e o pavor.',
 '500', '1979/06/22', 'Fornecedor_1', '1299', 10, 1, 1);
 
 
