@@ -1,30 +1,26 @@
     </main>            
-            <footer class="container-fluid COLORE fontecatorze fixed-bottom alturafooter">
-            
-                <section class="row alinhamentotexto">
-                    <div class="col-md-2 paddingtop">
-                        <img class="d-block w-100 img-responsive" src="img/logomarcafooter.png" alt="logo volare">
+            <footer class="container-fluid fontecatorze ">           
+                <section class="row alinhamentotexto COLORE panel-footer">
+                    <div class="col-sm-3 col-md-2 col-lg-2  d-none d-sm-block paddingtop">
+                        <img class="d-block w-100" src="img/logomarcafooter.png" alt="logo volare">
                     </div>
-                    <div class="col-md-1"></div>
-                     <div class="col-md-3 paddingtop">
+                    <div class="col-sm-1 col-md-1 col-lg-1"> </div>
+                     <div class="col-sm-4 col-xs-4 col-md-3 col-lg-3 paddingtop text-left">
                     <p>
                         Central de Atendimento:</br>
                         Telefone: (000) 0000-0000</br>
                         E-mail: livrariavolare@mail.com
                     </p>
                      </div>
-                    <div class="col-md-3 paddingtop">
-                    <p>
-                        Forma de Pagamento:<br/>
-                        <img src="img/pagsegurologo.png" title="logomarca" alt="logo livraria volare">
-
-                    </p>
+                    <div class="col-sm-2 col-xs-4 col-md-3 col-lg-3 paddingtop text-left">
+                        Forma de Pagamento: <i>PagSeguro</i><br/>
+                       <img src="img/pagsegurologo.png" class="d-sm-none d-md-block" title="logomarca" alt="logo livraria volare">
                     </div>
-                    <div class="col-md-3 paddingtop">
+                    <div class="col-sm-2 col-xs-4 col-md-3 col-lg-3 paddingtop text-left">
                     <p >
                         Siga-nos nas redes:<br/>
-                        <span style="font-size: 3rem;"><i class="fab fa-facebook"></i></span>&nbsp;
-                        <span style="font-size: 3rem;"><i class="fab fa-instagram"></i></span>
+                        <span style="font-size: 2rem;"><i class="fab fa-facebook"></i></span>&nbsp;
+                        <span style="font-size: 2rem;"><i class="fab fa-instagram"></i></span>
                     </p>
                     </div>
 
@@ -76,5 +72,5 @@
             });
 		<!--fim das máscaras-->
         </script>
-		</body>
+    </body>
 </html>
