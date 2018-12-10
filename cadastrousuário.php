@@ -4,8 +4,8 @@
                     <legend><h1>Cadastro</h1></legend>
                     <form action="php/CRUDS/registroUsuario.php" method="POST">
                         <div class="form-group"> <h4>Dados pessoais</h4>
-							<div class="row">	
-								<div class="col">	
+							<div class="row">
+								<div class="col">
 									<label for="iNome">Nome:</label>
 									<input type="text" id="iNome" name="txtNome" class="form-control" maxlength="100" required>
 									<br/>
@@ -68,7 +68,7 @@
 								<div class="col"><!--adicionar tipo de coluna, testar layout-->
 									<label for="iEndCobr">Endereço:</label>
 									<input type="text" id="iEndCobr" name="txtEndCobr" class="form-control" required maxlength="255">
-								</div>	
+								</div>
 							</div>
 							<div class="row">
 								<div class="col">
@@ -85,13 +85,13 @@
 									<input type="text"  id="iBairro" name="txtBairro" class="form-control" required maxlength="50">
 								</div>
 							</div>
-							<div class="row">	
+							<div class="row">
 								<div class="col">
 									<label for="iCidade">Cidade:</label>
 									<input type="text"  id="iCidade" name="txtCidade" class="form-control" required maxlength="50">
 								</div>
 								<div class="col">
-									<label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->	
+									<label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
 									<select id="sEstado" name="txtEstado" class="form-control">
 										<option value="AC">Acre</option>
 										<option value="AL">Alagoas</option>
@@ -130,7 +130,7 @@
                         		</div>
 							</div>
                         </div>
-                        
+
                     </form>
                 </fieldset><!--********fim do formulário*************-->
 <?php require_once("footer.php"); ?>

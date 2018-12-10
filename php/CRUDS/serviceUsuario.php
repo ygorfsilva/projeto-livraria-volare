@@ -25,9 +25,9 @@ require_once 'crud_usuario.php';
 			return false;
 		}
 	}
-	function serviceListarUsu($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
-		if ($user = listarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id)){
-			$_SESSION['user'] = $user;
+	function serviceListarUsu($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $limit){
+		if ($user = listarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $limit)){
+			return $user;
 		} else {
 			return false;
 		}
