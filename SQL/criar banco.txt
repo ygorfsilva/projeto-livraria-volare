@@ -1,0 +1,381 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema ec3ts07mt1bukxi7
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `ec3ts07mt1bukxi7` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `ec3ts07mt1bukxi7` ;
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`perfil`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`perfil` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `perfil` ENUM('Admin', 'Cliente') NOT NULL DEFAULT 'Cliente',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`genero`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`genero` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `genero` ENUM('Masculino', 'Feminino') NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`login`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`login` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `datahora` TIMESTAMP NOT NULL DEFAULT now(),
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`usuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `sobrenome` VARCHAR(80) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `cpf` VARCHAR(45) NOT NULL,
+  `datanascimento` TIMESTAMP NOT NULL,
+  `ativo` TINYINT(1) NOT NULL,
+  `senha` TEXT NOT NULL,
+  `perfil_id` INT NOT NULL,
+  `genero_id` INT NOT NULL,
+  `login_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `Email_UNIQUE` (`email` ASC),
+  INDEX `fk_usuarios_perfil1_idx` (`perfil_id` ASC),
+  INDEX `fk_usuarios_genero1_idx` (`genero_id` ASC),
+  INDEX `fk_usuarios_login1_idx` (`login_id` ASC),
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC),
+  CONSTRAINT `fk_usuarios_perfil1`
+    FOREIGN KEY (`perfil_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`perfil` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarios_genero1`
+    FOREIGN KEY (`genero_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`genero` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarios_login1`
+    FOREIGN KEY (`login_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`login` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`categoria`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`categoria` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `categoria` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`subcategorias`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`subcategorias` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `assunto` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`tipodecapa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`tipodecapa` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `tipodecapa` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`produto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`produto` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `Categoria_id` INT NOT NULL,
+  `titulo` VARCHAR(45) NOT NULL,
+  `autor` VARCHAR(80) NOT NULL,
+  `editora` VARCHAR(45) NOT NULL,
+  `isbn` VARCHAR(15) NOT NULL,
+  `numeropaginas` INT NOT NULL,
+  `sinopse` TEXT NOT NULL,
+  `peso` FLOAT NOT NULL,
+  `datapublicacao` DATETIME NOT NULL,
+  `fornecedor` VARCHAR(50) NOT NULL,
+  `preco` FLOAT NOT NULL,
+  `quantidade` INT NOT NULL,
+  `imagem` VARCHAR(100) NULL,
+  `SubCategorias_id` INT NOT NULL,
+  `TipoDeCapa_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Produto_Categoria_idx` (`Categoria_id` ASC),
+  INDEX `fk_Produto_SubCategorias1_idx` (`SubCategorias_id` ASC),
+  INDEX `fk_Produto_TipoDeCapa1_idx` (`TipoDeCapa_id` ASC),
+  CONSTRAINT `fk_Produto_Categoria`
+    FOREIGN KEY (`Categoria_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`categoria` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Produto_SubCategorias1`
+    FOREIGN KEY (`SubCategorias_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`subcategorias` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Produto_TipoDeCapa1`
+    FOREIGN KEY (`TipoDeCapa_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`tipodecapa` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`telefone`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`telefone` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `numero` VARCHAR(45) NOT NULL,
+  `usuarios_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Telefone_usuarios1_idx` (`usuarios_id` ASC),
+  CONSTRAINT `fk_Telefone_usuarios1`
+    FOREIGN KEY (`usuarios_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`tipoendereco`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`tipoendereco` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `tipo` VARCHAR(50) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`endereco`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`endereco` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cep` VARCHAR(12) NOT NULL,
+  `endereco` VARCHAR(255) NOT NULL,
+  `numero` INT NOT NULL,
+  `complemento` VARCHAR(50) NULL,
+  `bairro` VARCHAR(100) NOT NULL,
+  `estado` VARCHAR(50) NOT NULL,
+  `cidade` VARCHAR(50) NOT NULL,
+  `usuarios_id` INT NOT NULL,
+  `TipoEndereco_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Endereco_usuarios1_idx` (`usuarios_id` ASC),
+  INDEX `fk_Endereco_TipoEndereco1_idx` (`TipoEndereco_id` ASC),
+  CONSTRAINT `fk_Endereco_usuarios1`
+    FOREIGN KEY (`usuarios_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Endereco_TipoEndereco1`
+    FOREIGN KEY (`TipoEndereco_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`tipoendereco` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`interesses`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`interesses` (
+  `usuarios_id` INT NOT NULL,
+  `Categoria_id` INT NOT NULL,
+  PRIMARY KEY (`usuarios_id`, `Categoria_id`),
+  INDEX `fk_usuarios_has_Categoria_Categoria1_idx` (`Categoria_id` ASC),
+  INDEX `fk_usuarios_has_Categoria_usuarios1_idx` (`usuarios_id` ASC),
+  CONSTRAINT `fk_usuarios_has_Categoria_usuarios1`
+    FOREIGN KEY (`usuarios_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarios_has_Categoria_Categoria1`
+    FOREIGN KEY (`Categoria_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`categoria` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`idioma`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`idioma` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `idioma` ENUM('ENG', 'POR', 'SPN') NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`tipotelefone`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`tipotelefone` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `tipo` VARCHAR(45) NOT NULL,
+  `Telefone_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_TipoTelefone_Telefone1_idx` (`Telefone_id` ASC),
+  CONSTRAINT `fk_TipoTelefone_Telefone1`
+    FOREIGN KEY (`Telefone_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`telefone` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`Produto_has_Idioma`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`Produto_has_Idioma` (
+  `Produto_id` INT NOT NULL,
+  `Idioma_id` INT NOT NULL,
+  PRIMARY KEY (`Produto_id`, `Idioma_id`),
+  INDEX `fk_Produto_has_Idioma_Idioma1_idx` (`Idioma_id` ASC),
+  INDEX `fk_Produto_has_Idioma_Produto1_idx` (`Produto_id` ASC),
+  CONSTRAINT `fk_Produto_has_Idioma_Produto1`
+    FOREIGN KEY (`Produto_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`produto` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Produto_has_Idioma_Idioma1`
+    FOREIGN KEY (`Idioma_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`idioma` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`status_entrega`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`status_entrega` (
+  `idstatus_entrega` INT NOT NULL AUTO_INCREMENT,
+  `status_entregacol` ENUM('Postado','A caminho do endereço de entrega','Entregue') NULL,
+  PRIMARY KEY (`idstatus_entrega`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`status_compra`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`status_compra` (
+  `idstatus_compra` INT NOT NULL AUTO_INCREMENT,
+  `status_compra` ENUM('Em análise','Pagamento efetuado','Cancelado') NULL,
+  PRIMARY KEY (`idstatus_compra`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`pedidos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`pedidos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `usuarios_id` INT NOT NULL,
+  `data_pedido` TIMESTAMP NOT NULL,
+  `id_status_entrega` INT NOT NULL,
+  `id_status_compra` INT NOT NULL,
+  PRIMARY KEY (`id`, `usuarios_id`),
+  INDEX `fk_pedidos_usuarios1_idx` (`usuarios_id` ASC),
+  INDEX `fk_pedidos_status_entrega1_idx` (`id_status_entrega` ASC),
+  INDEX `fk_pedidos_status_compra1_idx` (`id_status_compra` ASC),
+  CONSTRAINT `fk_pedidos_usuarios1`
+    FOREIGN KEY (`usuarios_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pedidos_status_entrega1`
+    FOREIGN KEY (`id_status_entrega`)
+    REFERENCES `ec3ts07mt1bukxi7`.`status_entrega` (`idstatus_entrega`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pedidos_status_compra1`
+    FOREIGN KEY (`id_status_compra`)
+    REFERENCES `ec3ts07mt1bukxi7`.`status_compra` (`idstatus_compra`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`itens_pedido`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`itens_pedido` (
+  `pedidos_id` INT NOT NULL,
+  `produto_id` INT NOT NULL,
+  `quantidade` INT NULL,
+  `preco` FLOAT NULL,
+  PRIMARY KEY (`pedidos_id`, `produto_id`),
+  INDEX `fk_pedidos_has_produto_produto1_idx` (`produto_id` ASC),
+  INDEX `fk_pedidos_has_produto_pedidos1_idx` (`pedidos_id` ASC),
+  CONSTRAINT `fk_pedidos_has_produto_pedidos1`
+    FOREIGN KEY (`pedidos_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`pedidos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pedidos_has_produto_produto1`
+    FOREIGN KEY (`produto_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`produto` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`itens_reservados`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`itens_reservados` (
+  `usuarios_id` INT NOT NULL,
+  `produto_id` INT NOT NULL,
+  `quantidade` INT NOT NULL,
+  PRIMARY KEY (`usuarios_id`, `produto_id`),
+  INDEX `fk_usuarios_has_produto_produto1_idx` (`produto_id` ASC),
+  INDEX `fk_usuarios_has_produto_usuarios1_idx` (`usuarios_id` ASC),
+  CONSTRAINT `fk_usuarios_has_produto_usuarios1`
+    FOREIGN KEY (`usuarios_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarios_has_produto_produto1`
+    FOREIGN KEY (`produto_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`produto` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

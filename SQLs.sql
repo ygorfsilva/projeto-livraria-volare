@@ -36,17 +36,20 @@ insert into idioma (idioma) values ('POR');
 insert into subcategorias (assunto) values ('Ufologia');
 
 
-insert into produto (Categoria_id, titulo, autor, editora, isbn, numeropaginas, sinopse, peso, datapublicacao, fornecedor, preco, quantidade, TipoDeCapa_id)
+insert into produto (Categoria_id, titulo, autor, editora, isbn, numeropaginas, sinopse, peso, datapublicacao, fornecedor, preco, quantidade, subcategorias_id, TipoDeCapa_id)
 values (1, 'Alien', 'Alan Dean Foster', 'Warner Books', '9782302024618', 271, 'A princípio, mais uma missão como tantas do rebocador Nostromo: abastecer a terra com minério recolhido do espaço exterior. 
 Em sua tripulação, formada por sete competentes profissionais, apenas um novato: o oficial de ciências, designado de última hora para compor aquela expedição.
 No entanto, o que eles não sabiam era que o Nostromo estava programado para cumprir uma rota diferente, um curso que os levaria a receber um oitavo passageiro, que, com o intuito de se reproduzir, espalharia o asco e o pavor.',
-'500', '1979/06/22', 'Fornecedor_1', '1299', 10, 1, 1);
+500.0, '1979/06/22', 'Fornecedor_1', 12.99, 10, 1, 1);
 
+insert into status_entrega (status_entrega) values ('Postado');
+
+insert into status_compra (status_compra) values ('Em análise');
 
 insert into pedidos (usuarios_id, data_pedido) values (1, '2018/06/12');
 
 
-insert into intens_pedidos (pedidos_id, produto_id, quantidade, preco) values (1,1,1,'12,99');
+insert into itens_pedido (pedidos_id, produto_id, quantidade, preco) values (1,1,1,'12,99');
 
 
 insert into itens_reservados (usuarios_id, produto_id, quantidade)
@@ -56,12 +59,12 @@ values (1, 1, 1);
 insert into interesses (usuarios_id, Categoria_id) values (1,1);
 
 
-insert into Produto_has_Idiomas (produto_id, idioma_id) values (1,1);
+insert into Produto_has_Idioma (produto_id, idioma_id) values (1,1);
   
 
 
   
-create or alter view [vw_cadastro_clientes] as
+create or replace view vw_cadastro_clientes as
 
 select
 
@@ -72,7 +75,7 @@ usu.cpf,
 usu.datanascimento, 
 per.perfil, 
 ge.genero,
-tel.numero as numero,
+tel.numero as numero_tel,
 tipotel.tipo as tipo_telefone,
 logs.datahora as ultimo_login,
 ender.endereco, 
@@ -98,8 +101,7 @@ left join categoria cat on cat.id = inte.categoria_id;
 
 
 
-
-create or alter view [vw_cadastro_produtos] as
+create or replace view vw_cadastro_produtos as
 
 select
 
@@ -127,7 +129,7 @@ inner join tipodecapa tcap on tcap.id = prod.tipodecapa_id;
 
 
 
-create or alter view [vw_compras_realizadas] as
+create or replace view vw_compras_realizadas as
 
 select
 
@@ -138,7 +140,6 @@ prod.autor,
 prod.editora,
 'LV'|| ped.id as numero_pedido,
 ped.data_pedido,
-prod.titulo,
 itped.quantidade,
 itped.preco
 
@@ -160,3 +161,27 @@ from usuarios usu
 
 inner join itens_reservados itres on itres.usuarios_id = usu.id
 inner join produto prod on prod.id = itres.produto_id;
+
+
+
+
+select
+titulo,
+autor,
+editora,
+sinopse,
+datapublicacao,
+preco 
+
+from produto
+
+where titulo like '%n%' or autor like '%n%' or editora like '%n%' or ano = '%79'
+order by datapublicacao asc;
+
+
+
+
+
+
+
+
