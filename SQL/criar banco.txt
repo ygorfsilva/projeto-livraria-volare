@@ -5,7 +5,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema ec3ts07mt1bukxi7
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `ec3ts07mt1bukxi7` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+CREATE SCHEMA IF NOT EXISTS `ec3ts07mt1bukxi7` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 USE `ec3ts07mt1bukxi7` ;
 
 -- -----------------------------------------------------
@@ -125,7 +125,6 @@ CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`produto` (
   `fornecedor` VARCHAR(50) NOT NULL,
   `preco` FLOAT NOT NULL,
   `quantidade` INT NOT NULL,
-  `imagem` VARCHAR(100) NULL,
   `SubCategorias_id` INT NOT NULL,
   `TipoDeCapa_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -283,7 +282,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`status_entrega` (
   `idstatus_entrega` INT NOT NULL AUTO_INCREMENT,
-  `status_entregacol` ENUM('Postado','A caminho do endereço de entrega','Entregue') NULL,
+  `status_entrega` ENUM('Postado','A caminho do endereço de entrega','Entregue') NULL,
   PRIMARY KEY (`idstatus_entrega`))
 ENGINE = InnoDB;
 
@@ -375,6 +374,60 @@ CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`itens_reservados` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `ec3ts07mt1bukxi7`.`imagens`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`imagens` (
+  `id_imagens` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(255) NULL,
+  `produto_id` INT NOT NULL,
+  PRIMARY KEY (`id_imagens`),
+  INDEX `fk_imagens_produto1_idx` (`produto_id` ASC),
+  CONSTRAINT `fk_imagens_produto1`
+    FOREIGN KEY (`produto_id`)
+    REFERENCES `ec3ts07mt1bukxi7`.`produto` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+USE `ec3ts07mt1bukxi7` ;
+
+-- -----------------------------------------------------
+-- Placeholder table for view `ec3ts07mt1bukxi7`.`vw_cadastro_clientes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`vw_cadastro_clientes` (`nome` INT, `sobrenome` INT, `email` INT, `cpf` INT, `datanascimento` INT, `perfil` INT, `genero` INT, `numero_tel` INT, `tipo_telefone` INT, `ultimo_login` INT, `endereco` INT, `numero` INT, `complemento` INT, `bairro` INT, `cidade` INT, `estado` INT, `cep` INT, `tipo_endereco` INT, `interesses` INT);
+
+-- -----------------------------------------------------
+-- Placeholder table for view `ec3ts07mt1bukxi7`.`vw_cadastro_produtos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`vw_cadastro_produtos` (`titulo` INT, `autor` INT, `editora` INT, `isbn` INT, `numero_paginas` INT, `sinopse` INT, `peso` INT, `data_publicacao` INT, `fornecedor` INT, `tipo_capa` INT, `preco` INT, `quantidade` INT, `categoria` INT, `assunto` INT);
+
+-- -----------------------------------------------------
+-- Placeholder table for view `ec3ts07mt1bukxi7`.`vw_compras_realizadas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ec3ts07mt1bukxi7`.`vw_compras_realizadas` (`nome` INT, `cpf` INT, `titulo` INT, `autor` INT, `editora` INT, `numero_pedido` INT, `data_pedido` INT, `quantidade` INT, `preco` INT);
+
+-- -----------------------------------------------------
+-- View `ec3ts07mt1bukxi7`.`vw_cadastro_clientes`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `ec3ts07mt1bukxi7`.`vw_cadastro_clientes`;
+USE `ec3ts07mt1bukxi7`;
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`p8wzbq4q2lf0b40o`@`%` SQL SECURITY DEFINER VIEW `ec3ts07mt1bukxi7`.`vw_cadastro_clientes` AS select `usu`.`nome` AS `nome`,`usu`.`sobrenome` AS `sobrenome`,`usu`.`email` AS `email`,`usu`.`cpf` AS `cpf`,`usu`.`datanascimento` AS `datanascimento`,`per`.`perfil` AS `perfil`,`ge`.`genero` AS `genero`,`tel`.`numero` AS `numero_tel`,`tipotel`.`tipo` AS `tipo_telefone`,`logs`.`datahora` AS `ultimo_login`,`ender`.`endereco` AS `endereco`,`ender`.`numero` AS `numero`,`ender`.`complemento` AS `complemento`,`ender`.`bairro` AS `bairro`,`ender`.`cidade` AS `cidade`,`ender`.`estado` AS `estado`,`ender`.`cep` AS `cep`,`tipoend`.`tipo` AS `tipo_endereco`,`cat`.`categoria` AS `interesses` from (((((((((`ec3ts07mt1bukxi7`.`usuarios` `usu` join `ec3ts07mt1bukxi7`.`genero` `ge` on((`ge`.`id` = `usu`.`genero_id`))) join `ec3ts07mt1bukxi7`.`perfil` `per` on((`per`.`id` = `usu`.`perfil_id`))) left join `ec3ts07mt1bukxi7`.`telefone` `tel` on((`tel`.`usuarios_id` = `usu`.`id`))) left join `ec3ts07mt1bukxi7`.`tipotelefone` `tipotel` on((`tipotel`.`Telefone_id` = `tel`.`id`))) left join `ec3ts07mt1bukxi7`.`login` `logs` on((`logs`.`id` = `usu`.`login_id`))) left join `ec3ts07mt1bukxi7`.`endereco` `ender` on((`ender`.`usuarios_id` = `usu`.`id`))) left join `ec3ts07mt1bukxi7`.`tipoendereco` `tipoend` on((`tipoend`.`id` = `ender`.`TipoEndereco_id`))) left join `ec3ts07mt1bukxi7`.`interesses` `inte` on((`inte`.`usuarios_id` = `usu`.`id`))) left join `ec3ts07mt1bukxi7`.`categoria` `cat` on((`cat`.`id` = `inte`.`Categoria_id`)));
+
+-- -----------------------------------------------------
+-- View `ec3ts07mt1bukxi7`.`vw_cadastro_produtos`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `ec3ts07mt1bukxi7`.`vw_cadastro_produtos`;
+USE `ec3ts07mt1bukxi7`;
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`p8wzbq4q2lf0b40o`@`%` SQL SECURITY DEFINER VIEW `ec3ts07mt1bukxi7`.`vw_cadastro_produtos` AS select `prod`.`titulo` AS `titulo`,`prod`.`autor` AS `autor`,`prod`.`editora` AS `editora`,`prod`.`isbn` AS `isbn`,`prod`.`numeropaginas` AS `numero_paginas`,`prod`.`sinopse` AS `sinopse`,`prod`.`peso` AS `peso`,`prod`.`datapublicacao` AS `data_publicacao`,`prod`.`fornecedor` AS `fornecedor`,`tcap`.`tipodecapa` AS `tipo_capa`,`prod`.`preco` AS `preco`,`prod`.`quantidade` AS `quantidade`,`cat`.`categoria` AS `categoria`,`subc`.`assunto` AS `assunto` from (((`ec3ts07mt1bukxi7`.`produto` `prod` join `ec3ts07mt1bukxi7`.`categoria` `cat` on((`cat`.`id` = `prod`.`Categoria_id`))) join `ec3ts07mt1bukxi7`.`subcategorias` `subc` on((`subc`.`id` = `prod`.`SubCategorias_id`))) join `ec3ts07mt1bukxi7`.`tipodecapa` `tcap` on((`tcap`.`id` = `prod`.`TipoDeCapa_id`)));
+
+-- -----------------------------------------------------
+-- View `ec3ts07mt1bukxi7`.`vw_compras_realizadas`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `ec3ts07mt1bukxi7`.`vw_compras_realizadas`;
+USE `ec3ts07mt1bukxi7`;
+CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`p8wzbq4q2lf0b40o`@`%` SQL SECURITY DEFINER VIEW `ec3ts07mt1bukxi7`.`vw_compras_realizadas` AS select `usu`.`nome` AS `nome`,`usu`.`cpf` AS `cpf`,`prod`.`titulo` AS `titulo`,`prod`.`autor` AS `autor`,`prod`.`editora` AS `editora`,('LV' or (`ped`.`id` <> 0)) AS `numero_pedido`,`ped`.`data_pedido` AS `data_pedido`,`itped`.`quantidade` AS `quantidade`,`itped`.`preco` AS `preco` from (((`ec3ts07mt1bukxi7`.`usuarios` `usu` join `ec3ts07mt1bukxi7`.`pedidos` `ped` on((`ped`.`usuarios_id` = `usu`.`id`))) join `ec3ts07mt1bukxi7`.`itens_pedido` `itped` on((`itped`.`pedidos_id` = `ped`.`id`))) join `ec3ts07mt1bukxi7`.`produto` `prod` on((`prod`.`id` = `itped`.`produto_id`)));
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
