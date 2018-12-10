@@ -13,73 +13,71 @@
 </head>
 <body>
     <header>
-    <!-- TOP DO SITE -->    
-    <nav class="navbar-expand-lg navbar-dark bg-dark">   
-        <div class="container-fluid topoformatacao">
-        <a class="text-dark opacidade" href="#"><i class="fas fa-users"></i> Sobre a Volare</a>&nbsp;&nbsp;
-        <a class="text-dark opacidade" href="#"> <i class="fas fa-phone-volume"></i> Fale Conosco</a>
-        </div>
-    </nav>
-    <!-- fim do topo -->
-    
-    <nav class="navbar navbar-expand-md navbar-dark COLORE">
-    <!-- LOGO -->
-        <div>
-            <img src="img/logomarca1.png" alt="logomarca volare">
-        </div>        
-        <!-- HAMBURGER -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- COMEÇO DA DIV COLLAPSE HAMBURGER--> <div class="collapse navbar-collapse " id="navbarCollapse">
-            
-        <!-- DROPDOWN CATEGORIAS DA NAVBAR --> 
-            <div class="dropdown navbar-form navbar-left">
-                <button class="btn dropdown-toggle COLORE bordas text-light" type="button" id="menu1" data-toggle="dropdown"><i class="fas fa-bars"></i>&nbsp;&nbsp;CATEGORIAS
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu COLORE1" role="menu" aria-labelledby="menu1">
-                    <li role="presentation"><a role="menuitem" href="#">a</a></li>
-                    <li role="presentation"><a role="menuitem" href="#">b</a></li>
-                    <li role="presentation"><a role="menuitem" href="#">c</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li role="presentation"><a role="menuitem" href="#">d</a></li>
-                </ul>
+        <!-- TOPO DO SITE -->    
+        <nav class="navbar-expand-lg navbar-dark bg-dark">   
+            <div class="container-fluid topoformatacao">
+            <a class="text-dark opacidade" href="#"><i class="fas fa-users"></i> Sobre a Volare</a>&nbsp;&nbsp;
+            <a class="text-dark opacidade" href="#"> <i class="fas fa-phone-volume"></i> Fale Conosco</a>
             </div>
-        <div class="col-md-8 centraliza">
-        <!-- LINKS NAVBAR -->    
-          <ul class="navbar-nav mr-auto ">
-            <li class="nav-item ">
-              <a class="nav-link text-dark opacidade" href="#"><i class="fas fa-home"></i>&nbsp;Início</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark opacidade" href="#"><i class="fas fa-user-circle"></i>&nbsp;Entre ou cadastre-se</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark opacidade" href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Carrinho de compras</a>
-            </li>
-          </ul>
-        </div>
-        </div> <!-- FIM DA DIV COLLAPSE HAMBURGER -->
+        </nav>
+        <!-- fim do topo -->
+        <nav class="navbar navbar-expand-md navbar-dark COLORE"> 
+            <!-- HAMBURGER -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div>
+                <img src="img/logomarcac.png"  alt="logomarca"> 
+            </div>
+            <!-- COMEÇO DA DIV COLLAPSE HAMBURGER--> <div class="collapse navbar-collapse " id="navbarCollapse">
+
+            <!-- DROPDOWN CATEGORIAS DA NAVBAR --> 
+                <div class="dropdown navbar-form navbar-left">
+                    <button class="btn dropdown-toggle COLORE bordas fontedoze text-light" type="button" id="menu1" data-toggle="dropdown"><i class="fas fa-bars"></i>&nbsp;&nbsp;<b>CATEGORIAS</b>
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu COLORE1" role="menu" aria-labelledby="menu1">
+                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#">cat 1</a></li>
+                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#">cat 2</a></li>
+                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#">cat 3</a></li>
+                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#">cat 4</a></li>
+                    </ul>
+                </div>
+            <div class="col-md-8 centraliza">
+            <!-- LINKS NAVBAR -->    
+              <ul class="navbar-nav mr-auto fontedezesseis">
+                <li class="nav-item ">
+                  <a class="nav-link text-dark opacidade" href="#"><i class="fas fa-home"></i>&nbsp;Início</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark opacidade" href="#"><i class="fas fa-user-circle"></i>&nbsp;Entre ou cadastre-se</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark opacidade" href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Carrinho de compras</a>
+                </li>
+              </ul>
+            </div>
+            </div> <!-- FIM DA DIV COLLAPSE HAMBURGER -->
         <!-- CAMPO DE BUSCA -->
-            <form class="form-inline mt-2 mt-md-0">
+            <form class="form-inline mt-2 mt-md-0 col-md-4 col-lg-4 centraliza">
                 <div class="input-group">
                     <span class="input-group-append">
                         
-                            <select class="form-control py-2 COLORE1 bordas">
-                            <option class="COLORE1 bordas">BUSCAR POR</option>
-                            <option class="COLORE1 bordas">título</option>
-                            <option class="COLORE1 bordas">autor</option>
-                            <option class="COLORE1 bordas">ano</option>
+                            <select class="form-control py-2 COLORE1 fonteonze bordas">
+                            <option class="COLORE1 bordas fontecatorze d-none">BUSCAR POR</option>
+                            <option class="COLORE1 bordas fontedezesseis">busca livre</option>
+                            <option class="COLORE1 bordas fontedezesseis">título</option>
+                            <option class="COLORE1 bordas fontedezesseis">autor</option>
+                            <option class="COLORE1 bordas fontedezesseis">ano</option>
                             </select>
                         
                     </span> 
-                    <input class="form-control py-2 border-right-0 border" href="#" type="search" value="" id="">
+                    <input class="form-control py-2 border-right-0 border noradius" href="#" type="search" value="" id="">
                     <span class="input-group-append">
-                        <div class="input-group-text bg-white"><i class="fa fa-search"></i></div>
+                        <div class="input-group-text bg-white noradius"><i class="fa fa-search"></i></div>
                     </span> 
                 </div>    
-            </form>
-      </nav>
+            </form> <!--fim do campo de busca-->
+        </nav>
     </header>
     <main>
         
