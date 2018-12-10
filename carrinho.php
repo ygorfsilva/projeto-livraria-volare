@@ -24,9 +24,9 @@
                             <td>
                                 <div class="form-group"><!--tentar alinhar-->
                                     <div class="row">
-                                        <button type="button" class="btn btn-light" id="btnMenos">-</button>
-                                        <input type="text" class="form-control col-2 light" name="qtdProduto" min="1">
-                                        <button type="button" class="btn btn-light" id="btnMais">+</button>
+                                        <button onclick="funcaoParaExecutarMenos()" type="button" class="btn btn-light" id="btnMenos">-</button>
+                                        <input type="text" class="form-control col-2 light" name="qtdProduto" min="1" id=quantidadeProduto>
+                                        <button onclick="funcaoParaExecutarMais()" type="button" class="btn btn-light" id="btnMais">+</button>
                                     </div>
                                 </div>
                             </td>
@@ -58,4 +58,47 @@
 <script>
     console.log(document.getElementById("idpreco").textContent);
     console.log($("#idpreco").text());
+</script>
+<script>
+
+      document.getElementById("quantidadeProduto").addEventListener("keyup", function () {
+          if (isNaN(document.getElementById("quantidadeProduto").value)){
+          document.getElementById("quantidadeProduto").value = 0;
+        }
+      });
+
+      
+
+    if(document.getElementById("quantidadeProduto").value == ""){
+      document.getElementById("quantidadeProduto").value = parseInt('1');
+   }
+
+
+
+
+
+
+
+    function funcaoParaExecutarMenos (){
+        quantProdutoo = document.getElementById("quantidadeProduto").value;
+        quantProduto = parseInt(quantProdutoo);
+        if (document.getElementById("quantidadeProduto").value <= 0){
+          document.getElementById("quantidadeProduto").value = parseInt('0');
+          exit;
+        }
+        quantProduto = quantProduto - 1;
+        console.log(quantProduto);
+
+          document.getElementById("quantidadeProduto").value = (quantProduto);
+    }
+    function funcaoParaExecutarMais (){
+      quantProdutoo = document.getElementById("quantidadeProduto").value;
+      quantProduto = parseInt(quantProdutoo);
+      if (document.getElementById("quantidadeProduto").value < 0){
+        document.getElementById("quantidadeProduto").value = parseInt('0');
+      }
+      quantProduto = quantProduto + 1;
+      console.log(quantProduto);
+        document.getElementById("quantidadeProduto").value = (quantProduto);
+    }
 </script>
