@@ -1,46 +1,32 @@
-body{
-    font-family: "trebuchet";
-}
-
-.nopadding{
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-.paddingtop{
-    padding-top: 10px;
-}
-
-alinhamentotexto {
-  text-align: left;
-}
-
-.blackcolor{
-    color: black;
-}
+/***** classes referentes a cor *******/
 
 .COLORE{
-    background-color: rgb(226,108,255);     
+    background-color: white;     
 }
 
 .COLORE1{
-    background-color: rgb(226,108,255); 
-    font-size: 12px;
+    background-color: white; 
 }
 
 .COLORETEXTO{
-    color: rgb(203,134,207);
+    color: gray;
 }
 
-.opacidade{
-    opacity: 0.7;
+.topoformatacao{
+    background-color: whitesmoke;
+    font-size: 15px;
+    padding-left: 35px;
+    text-align: left;
+    height: auto;
+    color: white;
 }
 
 .bordas {
-    border: 2px solid rgb(226,108,255);
+    border: 2px solid white;
     border-radius: 0px;
 }
 
+/********** bordas *******/
 .bordasb {
     border: 1px solid lightgray;
     border-radius: 6px;
@@ -52,12 +38,39 @@ alinhamentotexto {
     height: 290px;
 }
 
-.fontecatorze{
-     font-size: 14px;
+.bordaspraconteudo{
+    border-top: 1px solid lightskyblue;
+    padding-top: 25px;
+    margin-bottom: 30px;
+/*usado na index*/
+}
+
+/**** opacidade ****/
+
+.opacidade{
+    opacity: 0.7;
+}
+
+/******* fonte ********/
+
+body{
+    font-family: "trebuchet";
+    position: relative;
+    min-height: 100%;
+}
+
+/******* tamanho de fonte ******/
+
+.fonteonze{
+    font-size: 11px;
+}
+
+.fontedoze{
+     font-size: 12px;
 }
 
 .fontequinze{
-     font-size: 12px;
+     font-size: 15px;
 }
 
 .fontedezesseis{
@@ -75,29 +88,10 @@ alinhamentotexto {
 .fontevinteecinco{
     font-size: 25px;
 }
+/******* posição *********/
 
-.marginfooter{
-    margin-top: 10px;
-    margin-left: 28px;
-}
-
-.distanciadamargem{
-    padding-right: 30px;
-    padding-left: 30px;
-    
-}
-
-.topoformatacao{
-    background-color: rgb(203,134,207);
-    font-size: 15px;
-    padding-left: 35px;
-    text-align: left;
-    height: auto;
-    color: white;
-}
-
-paddingsearch{
-    padding-bottom: 1px;
+.paddingtop{
+    padding-top: 10px;
 }
 
 .centraliza{
@@ -108,34 +102,31 @@ paddingsearch{
     margin-top: 29px;
 }
 
-.sectionformatacao{
-    border-top: 1px solid rgb(203,134,207);
-    padding-top: 25px;
-    margin-bottom: 30px;
-
+.marginbottom{
+    margin-bottom: 29px;
 }
 
 .paddingtexto{
     padding-top: 10px;
 }
 
-.alturafooter{
-    height: 100px;
-}
-
 .largurainput{
-    width: 40%
+    width: 185px;
 }
 
+.margindocard{
+    margin-bottom: 0px;
+}
 
-/*
+.noradius{
+    border-radius: 0px;
+}
+
+/********************************************
 	Ratings Stars
 	https://css-tricks.com/star-ratings/
 */
-/*
-	Ratings Stars
-	(with as little code as possible)
-*/
+
 .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
@@ -157,6 +148,6 @@ paddingsearch{
    left: 0; 
    color: lightblue;
 }
-/****fim do rating stars****/
+
 
 
