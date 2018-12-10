@@ -3,7 +3,7 @@ Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Ni
 
 # Link do Site
 
-<a href="https://www.google.com.br">Livraria Volare</a>
+<a href="http://livrariavolare.herokuapp.com/index.php">Livraria Volare</a>
 
 # Instrutor do Projeto
 
