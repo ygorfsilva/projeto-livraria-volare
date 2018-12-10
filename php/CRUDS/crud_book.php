@@ -60,7 +60,10 @@ function excluirLivro($id){
 		where prod.id = $id;";
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1) {
-			return mysqli_fetch_assoc($resultado);
+			$arr[] = NULL;
+			while ($linha = mysqli_fetch_assoc($resultado)){
+				$arr[] = $linha;
+			}
 		} else {
 			return false;
 		}

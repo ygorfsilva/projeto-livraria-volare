@@ -27,16 +27,16 @@
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="sr-only">Next</span>
                     </a>
-                  </div>    
+                  </div>
                 </div>
-            </section>    
+            </section>
             <!-- ********************** FIM DO CAROUSEL ****************** -->
                 <!-- COMEÇO DA PRIMEIRA SECTION-->
                 <h1 class="fontedezesseis COLORETEXTO col-md-8 centraliza margintop"><b>LANÇAMENTOS</b></h1>
                 <section class="bordaspraconteudo col-md-8 centraliza">
                     <!-- começo dos cards PRIMEIRA LINHA-->
                         <div class="card-deck mb-4 text-center ">
-                        
+
                         <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
                             <div class="card-header">
@@ -46,7 +46,9 @@
                                 <h4 class="fontedezesseis">Nome Sobrenome</h4>
                                 <h3 class="fontevinte">R$ 00,00</h3>
                                 <div class="btn-group">
+                                  <a href="carrinho.php">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                                  </a>
                                 </div>
                             </div>
                         </div> <!--fim da coluna 1-->
@@ -60,10 +62,12 @@
                                 <h4 class="fontedezesseis">Nome Sobrenome</h4>
                                 <h3 class="fontevinte">R$ 00,00</h3>
                                 <div class="btn-group">
+                                  <a href="carrinho.php">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                                  </a>
                                 </div>
                             </div>
-                        </div><!--fim da coluna 2-->    
+                        </div><!--fim da coluna 2-->
                         <!--coluna 3-->
                         <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
@@ -74,7 +78,9 @@
                                 <h4 class="fontedezesseis">Nome Sobrenome</h4>
                                 <h3 class="fontevinte">R$ 00,00</h3>
                                 <div class="btn-group">
+                                  <a href="carrinho.php">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                                  </a>
                                 </div>
                             </div>
                         </div><!--fim da coluna 3-->
@@ -88,10 +94,12 @@
                                 <h4 class="fontedezesseis">Nome Sobrenome</h4>
                                 <h3 class="fontevinte">R$ 00,00</h3>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                                    <a href="carrinho.php">
+                                      <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                                    </a>
                                 </div>
                             </div>
                         </div> <!--fim da coluna 4-->
-                       </div> <!-- fim dos cards primeira linha-->                       
-                </section><!-- FIM DA PRIMEIRA SECTION -->                             
+                       </div> <!-- fim dos cards primeira linha-->
+                </section><!-- FIM DA PRIMEIRA SECTION -->
 <?php require_once("footer.php"); ?>
