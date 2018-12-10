@@ -46,12 +46,12 @@
             <!-- LINKS NAVBAR -->
               <ul class="navbar-nav mr-auto fontedezesseis">
                 <li class="nav-item ">
-                  <a class="nav-link text-dark opacidade" href="#"><i class="fas fa-home"></i>&nbsp;Início</a>
+                  <a class="nav-link text-dark opacidade" href="index.php"><i class="fas fa-home"></i>&nbsp;Início</a>
                 </li>
                 <?php
                 if (!isset($_SESSION['user'])) { ?>
                 <li class="nav-item">
-                  <a class="nav-link text-dark opacidade" href="#"><i class="fas fa-user-circle"></i>&nbsp;Entre ou cadastre-se</a>
+                  <a class="nav-link text-dark opacidade" href="entrar.php"><i class="fas fa-user-circle"></i>&nbsp;Entre ou cadastre-se</a>
                 </li>
               <?php }else{ ?>
                 <li class="nav-item">
@@ -59,7 +59,7 @@
                 </li>
               <?php } ?>
                 <li class="nav-item">
-                  <a class="nav-link text-dark opacidade" href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Carrinho de compras</a>
+                  <a class="nav-link text-dark opacidade" href="carrinho.php"><i class="fas fa-shopping-cart"></i>&nbsp;Carrinho de compras</a>
                 </li>
               </ul>
             </div>

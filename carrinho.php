@@ -24,9 +24,9 @@
                             <td>
                                 <div class="form-group"><!--tentar alinhar-->
                                     <div class="row">
-                                        <button type="button" class="btn btn-light">+</button>
+                                        <button type="button" class="btn btn-light" id="btnMenos">-</button>
                                         <input type="text" class="form-control col-2 light" name="qtdProduto" min="1">
-                                        <button type="button" class="btn btn-light">-</button>
+                                        <button type="button" class="btn btn-light" id="btnMais">+</button>
                                     </div>
                                 </div>
                             </td>
@@ -48,12 +48,12 @@
                 </div>
                 <div class="col bordasc">
                     <h5>Calcule o frete</h5>
-                                
-                </div>       
+
+                </div>
             </div>
         </div>
     </div>
-    
+
 <?php require_once("footer.php"); ?>
 <script>
     console.log(document.getElementById("idpreco").textContent);
