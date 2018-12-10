@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'conexao.php';
 function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
 	$datanascimento = date('Y-m-d', strtotime($datanascimento));
@@ -19,7 +20,9 @@ function logarUsuario($email, $senha){
 	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha')";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
-		return mysqli_fetch_assoc($resultado);
+		$_SESSION['user'] = mysqli_fetch_assoc($resultado);
+		$_SESSION['user_id'] = $_SESSION['user']['id'];
+		return true;
 	} else {
 		return false;
 	}
@@ -71,8 +74,8 @@ left join login logs  on logs.id = usu.login_id
 left join endereco ender on ender.usuarios_id = usu.id
 left join tipoendereco tipoend	on tipoend.id = ender.tipoendereco_id
 left join interesses inte on inte.usuarios_id = usu.id
-left join categoria cat on cat.id = inte.categoria_id;"
-if (isset($limit)) {
+left join categoria cat on cat.id = inte.categoria_id;";
+if ($limit != NULL) {
 	$sql .= " LIMIT $limit";
 }
 $resultado = mysqli_query($conexao, $sql);
@@ -82,4 +85,8 @@ if (mysqli_affected_rows($conexao) >= 1) {
 	}
 	return $arr;
 }
+}
+function deslogarUsuario(){
+	session_destroy();
+	header('location: index.php');
 }

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'conexao.php';
 function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $quantidade, $imagem){
 	$data = date('Y-m-d', strtotime($data));
@@ -68,4 +69,11 @@ function excluirLivro($id){
 			return false;
 		}
 	}
+	}
+	function pesquisarLivro($pesquisa){
+		$conexao = getConnection();
+		$sql = "";
+		$sql .= "LIKE %$pesquisa%";
+		$resultado = mysqli_query($conexao, $sql);
+
 	}

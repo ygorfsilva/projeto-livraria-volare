@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'conexao.php';
 # Inserir nos produtos reservados
 function inserirCarrinho($user_id, $id, $quant){

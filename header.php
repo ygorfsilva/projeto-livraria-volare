@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -55,7 +58,7 @@
                 </li>
               <?php }else{ ?>
                 <li class="nav-item">
-                  <a class="nav-link text-dark opacidade" href="#"><i class="fas fa-user-circle"></i>&nbsp;Entre ou cadastre-se</a>
+                  <a class="nav-link text-dark opacidade" href="php/CRUDS/deslogarUsuario.php"><i class="fas fa-user-circle"></i>&nbsp;Logout</a>
                 </li>
               <?php } ?>
                 <li class="nav-item">
