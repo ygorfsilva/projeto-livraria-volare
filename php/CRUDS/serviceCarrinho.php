@@ -2,26 +2,20 @@
 require_once 'crud_carrinho.php';
 # Inserir no carrinho
   function serviceInserir($user_id, $id, $quant){
-    if ($carrinho = inserirCarrinho($user_id, $id, $quant){
-			header('location: testeCarrinho.php');
-		} else {
-      echo "falhou";
-		}
+    inserirCarrinho($user_id, $id, $quant);
   }
   # Aumentar o número de produtos reservados
   function serviceUpdateAdd($quant, $id){
     if ($carrinho = updateAdd($quant, $id)) {
-      header('location: testeCarrinho.php');
+      echo "foi";
 		} else {
       echo "falhou";
 		}
   }
   # Deletar os produto reservados
   function serviceDelete($quant_total, $id){
-    if ($carrinho = deleteCarrinho($quant_total, $id)) {
-      header('location: testeCarrinho.php');
-    } else {
-      echo "falhou";
+    if (deleteCarrinho($quant_total, $id)){
+
     }
   }
   # Alterar o número de produto reservados
