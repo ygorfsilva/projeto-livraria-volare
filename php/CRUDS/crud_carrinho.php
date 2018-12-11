@@ -4,7 +4,7 @@ require_once 'conexao.php';
 # Inserir nos produtos reservados
 function inserirCarrinho($user_id, $id, $quant){
 	$conexao = getConnection();
-  $sql = 'INSERT INTO itens_reservados values ($user_id, $id, $quant)';
+  $sql = "INSERT INTO itens_reservados values ($user_id, $id, $quant)";
   $resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
@@ -15,9 +15,9 @@ function inserirCarrinho($user_id, $id, $quant){
 # Aumentar o número de produtos reservados
 function updateAdd($quant, $id){
   $conexao = getConnection();
-  $sql = 'update itens_reservados set quantidade = quantidade + $quant where produto_id = $id';
+  $sql = "update itens_reservados set quantidade = quantidade + $quant where produto_id = $id";
   $resultado = mysqli_query($conexao, $sql);
-  $sql = 'update produto set quantidade = quantidade - $quant where id = $id';
+  $sql = "update produto set quantidade = quantidade - $quant where id = $id";
   $resultado = mysqli_query($conexao, $sql);
   if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
@@ -26,11 +26,11 @@ function updateAdd($quant, $id){
 	}
 }
 # Deletar os produto reservados
-function deleteCarrinho($id){
+function deleteCarrinho($quant_total, $id){
   $conexao = getConnection();
-  $sql = 'update produto set quantidade = quantidade + $quant_total where id = $id';
+  $sql = "update produto set quantidade = quantidade + $quant_total where id = $id";
   $resultado = mysqli_query($conexao, $sql);
-  $sql = 'DELETE FROM itens_reservados where produto_id = $id';
+  $sql = "DELETE FROM itens_reservados where produto_id = $id";
   $resultado = mysqli_query($conexao, $sql);
   if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
@@ -38,11 +38,10 @@ function deleteCarrinho($id){
 		return false;
 	}
 }
-}
 # Alterar o número de produto reservados
 function updateAlt($qtd, $id){
 	$conexao = getConnection();
-  $sql = 'update itens_reservados set quantidade = $qtd where produto_id = $id';
+  $sql = "update itens_reservados set quantidade = $qtd where produto_id = $id";
   $resultado = mysqli_query($conexao, $sql);
   $sql = 'update produto set quantidade = quantidade - $qtd where id = $id';
   $resultado = mysqli_query($conexao, $sql);
@@ -51,7 +50,6 @@ function updateAlt($qtd, $id){
 	} else {
 		return false;
 	}
-}
 }
 function listarCarrinho($limit){
   $conexao = getConnection();

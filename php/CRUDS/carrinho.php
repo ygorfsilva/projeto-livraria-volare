@@ -17,7 +17,7 @@ if(!isset($_SESSION['carrinho'])) {
 if(isset($_GET['id'])){
   $_POST['id_produto'] = $_GET['id'];
   # Array que joga pros itens reservados no banco
-  $carrinho_info = array('id' => $_POST['id_produto'], 'qtd' => intval($_POST['quantity']));
+  $carrinho_info = array('id' => $_POST['id_produto'], 'qtd' => $quant);
 }
 if(isset($_GET['acao'])) {
     # Adiciona o produto
@@ -27,7 +27,7 @@ if(isset($_GET['acao'])) {
             # Caso o produto não exista no carrinho, bote ele no carrinho
             $_SESSION['carrinho'][$id] = $quant;
             # Se o usuário estiver logado, mandar pro banco o item reservado.
-            if (isset($_SESION['user_id'])){
+            if (isset($_SESSION['user_id'])){
             $user_id = $_SESSION['user_id'];
             serviceInserir($user_id, $id, $quant);
             }
@@ -35,7 +35,7 @@ if(isset($_GET['acao'])) {
           # Caso o produto esteja no carrinho, aumente a quantidade dele.
             $_SESSION['carrinho'][$id] += $quant;
             # Se o usuário estiver logado, somar com a quantidade da reserva no banco.
-            if (isset($_SESION['user_id'])){
+            if (isset($_SESSION['user_id'])){
               serviceUpdateAdd($quant, $id);
             }
         }
@@ -47,12 +47,12 @@ if(isset($_GET['acao'])) {
         $id = intval($_GET['id']);
         # Se o item existir no carrinho
         if(isset($_SESSION['carrinho'][$id])) {
+          $quant_total = $_SESSION['carrinho'][$id];
           # Retire o item do carrinho
             unset($_SESSION['carrinho'][$id]);
             # Se o usuário estiver logado, retire dos itens reservados, e aumente o estoque.
             if (isset($_SESSION['user_id'])){
               # Pegar a quantidade total do carrinho
-            $quant_total = $_SESSION['carrinho']['$id'];
             serviceDelete($quant_total, $id);
           }
         }
