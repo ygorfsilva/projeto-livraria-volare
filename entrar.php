@@ -1,5 +1,9 @@
-<?php require_once("header.php"); ?>
-<script src="js/facebook-sdk.js"></script>
+<?php
+require_once 'header.php';
+if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
+  echo "<script>window.location.assign('index.php')</script>";
+} else {
+ ?>
     <div class="container-fluid col-md-8 centraliza margintop">
         <div class="row">
             <div class="col-md-6 centraliza">
@@ -40,13 +44,8 @@
                 <div class="form-group">
                                 <div class="col-sm-offset-2 col-md-10">
                                     <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                                    <p id="mensagem"></p>
-                                    <a href="#" onclick="FB.logout();">Logout</a>
                                 </div>
-
-
-            </div>
         </div>
     </div>
 </div>
-<?php require_once("footer.php"); ?>
+<?php require_once 'footer.php'; } ?>

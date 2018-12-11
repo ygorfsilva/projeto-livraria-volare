@@ -15,6 +15,9 @@ session_start();
   <link rel="stylesheet" type="text/css" href="css/estilo.css">
 </head>
 <body>
+  <script src="js/pegarValor.js"></script>
+  <script src="js/facebook-sdk.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
     <header>
         <!-- TOPO DO SITE -->
         <nav class="navbar-expand-lg navbar-dark bg-dark">
@@ -52,11 +55,11 @@ session_start();
                   <a class="nav-link text-dark opacidade" href="index.php"><i class="fas fa-home"></i>&nbsp;Início</a>
                 </li>
                 <?php
-                if (!isset($_SESSION['user'])) { ?>
+                if (!isset($_SESSION['user']) && !isset($_SESSION['token_face'])) { ?>
                 <li class="nav-item">
                   <a class="nav-link text-dark opacidade" href="entrar.php"><i class="fas fa-user-circle"></i>&nbsp;Entre ou cadastre-se</a>
                 </li>
-              <?php }else{ ?>
+              <?php } else { ?>
                 <li class="nav-item">
                   <a class="nav-link text-dark opacidade" href="php/CRUDS/deslogarUsuario.php"><i class="fas fa-user-circle"></i>&nbsp;Logout</a>
                 </li>
