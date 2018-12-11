@@ -15,9 +15,12 @@ session_start();
   <link rel="stylesheet" type="text/css" href="css/estilo.css">
 </head>
 <body>
-  <script src="js/pegarValor.js"></script>
-  <script src="js/facebook-sdk.js"></script>
-  <script src="js/jquery-3.3.1.min.js"></script>
+  <?php if (!isset($_SESSION['user'])){?>
+    <script src="js/pegarValor.js"></script>
+    <script src="js/facebook-sdk.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+  <?php }  ?>
+
     <header>
         <!-- TOPO DO SITE -->
         <nav class="navbar-expand-lg navbar-dark bg-dark">

@@ -1,7 +1,11 @@
 // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
+
     console.log('statusChangeCallback');
     console.log(response);
+    token = FB.getAuthResponse().accessToken;
+    pegarValor(token);
+    // Ajax para pegar o token
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
@@ -14,18 +18,21 @@
       document.getElementById('mensagem').innerHTML = 'Please log ' +
         'into this app.';
     }
-  }
+    FB.logout(function(response) {
+    // user is now logged out
+  });
+}
 
 window.fbAsyncInit = function() {
     FB.init({
       appId      : '300257644031216',
-      cookie     : true,  // enable cookies to allow the server to access 
+      cookie     : true,  // enable cookies to allow the server to access
                           // the session
       xfbml      : true,  // parse social plugins on this page
       version    : 'v2.8' // use graph api version 2.8
     });
 
-    // Now that we've initialized the JavaScript SDK, we call 
+    // Now that we've initialized the JavaScript SDK, we call
     // FB.getLoginStatus().  This function gets the state of the
     // person visiting this page and can return one of three states to
     // the callback you provide.  They can be:
@@ -43,7 +50,7 @@ window.fbAsyncInit = function() {
 
   };
 
-  
+
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
@@ -53,7 +60,6 @@ window.fbAsyncInit = function() {
     });
   }
 
-  
 
   // Load the SDK asynchronously
   (function(d, s, id) {
@@ -70,10 +76,5 @@ window.fbAsyncInit = function() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
-      document.getElementById('mensagem').innerHTML =
-        'Agora você está logado, ' + response.name + '!';
     });
-  }
-  function atualizar(){
-    window.location.reload()
   }
