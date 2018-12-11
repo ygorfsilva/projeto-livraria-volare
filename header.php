@@ -16,7 +16,7 @@ session_start();
 </head>
 <body>
   <?php if (!isset($_SESSION['user'])){?>
-    <script src="js/pegarValor.js"></script>
+    <script src="js/dadosFacebook.js"></script>
     <script src="js/facebook-sdk.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
   <?php }  ?>

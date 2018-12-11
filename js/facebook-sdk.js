@@ -1,23 +1,20 @@
 // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
 
+
     console.log('statusChangeCallback');
     console.log(response);
-    token = FB.getAuthResponse().accessToken;
-    pegarValor(token);
-    // Ajax para pegar o token
+
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
-
+      var uid = response.authResponse.userID;
+      var token = response.authResponse.accessToken;
+      pegarValor(token);
       // Logged into your app and Facebook.
       testAPI();
-    } else {
-      // The person is not logged into your app or we are unable to tell.
-      document.getElementById('mensagem').innerHTML = 'Please log ' +
-        'into this app.';
     }
     FB.logout(function(response) {
     // user is now logged out
@@ -44,7 +41,6 @@ window.fbAsyncInit = function() {
     //    your app or not.
     //
     // These three cases are handled in the callback function.
-
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
@@ -74,7 +70,6 @@ window.fbAsyncInit = function() {
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
     });
