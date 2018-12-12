@@ -1,5 +1,7 @@
 # Projeto Livraria Volare
-Projeto de conclusão de curso da turma de Programador Web (2018.2) - Unidade Niterói
+
+O Projeto da livraria Volare foi criado com intuito de colocarmos em prática todo nosso conhecimento e aprendizado ao longo de todo o nosso curso de programador web. Ai vem um questionamento porque uma livraria? Porque achamos que é através dos livros que agregamos o conhecimento e a aprendizagem; e é através deles que aprendemos a ser pessoas melhores em todos os sentidos da nossa vida. O intuito era fazer um projeto simples, porém com qualidade e que não devesse nada a nenhum site de livraria que conhecemos hoje no mercado.
+o projeto foi desenvolvido com a participação de todos os integrantes da equipe, e queriamos que fosse um site dinamico, armonico, com visual atrativo e que principalmente fosse simples de ser navegado.
 
 # Link do Site
 
